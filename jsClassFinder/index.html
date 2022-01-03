@@ -20,7 +20,10 @@
             <h2>rpgmaker mz jsClassFinder</h2>
             <input v-model="classNameToFind" placeholder="class name">
             <input v-model="methodNameToFind" placeholder="method name">
-            <button v-on:click="findClassMethod">find</button>
+            <button v-on:click="findClassMethod1">find1</button><br>
+            <br>
+            <input v-model="classMethod" placeholder="class.method" style="width: 300px;">
+            <button v-on:click="findClassMethod2">find2</button>
             <div v-for="(record, index) in foundRecord">
                 <h3>{{record.className}}.{{record.methodName}}</h3>
                 <textarea v-model="record.getList()" rows="7" cols="100"></textarea>

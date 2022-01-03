@@ -80,6 +80,7 @@ const vm = new Vue({
         urlClassJson: "https://raw.githubusercontent.com/floatingping/rpgmakerTools/master/JSClassRealizer/Release/mz_classes_v1.4.0_1.json",
         classNameToFind: "Window_Command",
         methodNameToFind: "initialize",
+        classMethod: "Window_Command.initialize",
         foundRecord: []
     },
     mounted: function () {
@@ -100,13 +101,25 @@ const vm = new Vue({
                     throw e;
                 });
         },
-        findClassMethod: function () {
+        findClassMethod: function (className, metmodName) {
+            const list = aClassesFinder.findMethod(className, metmodName);
+            this.foundRecord.unshift(new ClassToShow(className, metmodName, list));
+        },
+        findClassMethod1: function () {
             if (!this.classNameToFind || !this.methodNameToFind) {
                 alert("not empty!");
                 return;
             }
-            const list = aClassesFinder.findMethod(this.classNameToFind, this.methodNameToFind);
-            this.foundRecord.unshift(new ClassToShow(this.classNameToFind, this.methodNameToFind, list))
+            this.findClassMethod(this.classNameToFind, this.methodNameToFind);
+        },
+        findClassMethod2: function () {
+            if(!this.classMethod.includes(".")){
+                alert("need '.'!");
+                return;
+            }
+            const className = this.classMethod.split(".")[0];
+            const methodName = this.classMethod.split(".")[1];
+            this.findClassMethod(className, methodName);
         }
     }
 });
