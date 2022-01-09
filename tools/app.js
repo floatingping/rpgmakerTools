@@ -4,8 +4,8 @@
 const vm = new Vue({
     el: "#app",
     data: {
-        dataA: "a\nb\nc\nb",
-        dataB: "b\nd\nb",
+        dataA: "",
+        dataB: "",
         countsOR: "",
         countsAND: "",
         countsOnlyA: "",
@@ -25,7 +25,7 @@ const vm = new Vue({
         },
         getLines: function (data) {
             const str = data ?? "";
-            return str.replaceAll("\r\n", "\n").split("\n");
+            return str.replaceAll("\r\n", "\n").split("\n").map(s => s?.trim() ?? "");
         },
         /**
          * 
