@@ -48,7 +48,6 @@ const vm = new Vue({
             }, "");
         },
         getKeyString: function (countsData) {
-            console.log(countsData);
             return Object.keys(countsData).join("\n");
         },
         countAND: function (countsDataA, countsDataB) {
