@@ -76,6 +76,18 @@
             
         </div>
         <div id="jsTools">
+            <h2>KeyWord Selecter</h2>
+            <hr>
+            <div class="width40">
+                input:<br>
+                <textarea v-model="keyWordSelecterIn" rows="10" cols="30"></textarea>
+                <textarea v-model="regexp" rows="1" cols="20"></textarea>
+            </div>
+            <div class="width40">
+                output:<br>
+                <textarea v-model="keyWordSelecterOut" rows="10" cols="30"></textarea>
+                <button v-on:click="seelctKeywords()">select</button>
+            </div>
             <h2>JS Class Generater</h2>
             <hr>
             <div class="width40">

@@ -3,10 +3,22 @@
 const vueJsTools = new Vue({
     el: "#jsTools",
     data: {
+        keyWordSelecterIn: `name:"test",
+    age:5 ,
+    money: 3 ,`,
+        regexp: `/\\s*:.*,/`,
+        keyWordSelecterOut: "",
         classKeys: "name\nage\nmoney",
         jsClass: ""
     },
     methods: {
+        seelctKeywords: function () {
+            if (!this.regexp) return alert("bad regexp");
+            if (!/^\/.*\/$/.test(this.regexp)) return alert("bad regexp");
+            this.keyWordSelecterOut = this.keyWordSelecterIn
+                .replaceAll(new RegExp(this.regexp.substring(1, this.regexp.length - 1), "g"), "")
+                .replaceAll(/\n\s+/g,"\n");
+        },
         generate: function () {
             const keys = this.classKeys.replaceAll("\r\n", "\n")
                 .split("\n")
