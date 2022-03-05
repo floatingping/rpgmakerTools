@@ -73,11 +73,26 @@
             </div>
             
 
-
+            
+        </div>
+        <div id="jsTools">
+            <h2>JS Class Generater</h2>
+            <hr>
+            <div class="width40">
+                ClassKeys:<br>
+                <textarea v-model="classKeys" rows="10" cols="50"></textarea>
+            </div>
+            <div class="width40">
+                Class:<br>
+                <textarea v-model="jsClass" rows="10" cols="50"></textarea>
+                <button v-on:click="generate()">generate</button>
+            </div>
+            <br>
         </div>
     </div>
 
-    <script src="app.js?20220109a"></script>
+    <script src="app.js?20220305a"></script>
+    <script src="jsTools.js?20220305a"></script>
 </body>
 
 </html>
