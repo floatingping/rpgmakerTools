@@ -25,7 +25,7 @@ const vm = new Vue({
         },
         getLines: function (data) {
             const str = data ?? "";
-            return str.replaceAll("\r\n", "\n").split("\n").map(s => s?.trim() ?? "");
+            return str.replaceAll("\r\n", "\n").split("\n").filter(s => (s?.trim() ?? "") !== "");
         },
         /**
          * 
