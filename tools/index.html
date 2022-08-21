@@ -16,6 +16,7 @@
             display: inline-block;
             width: 40%;
         }
+
         .width20 {
             display: inline-block;
             width: 20%;
@@ -71,9 +72,9 @@
                 countsOnlyB:<br>
                 <textarea v-model="getCountsString(countsOnlyB)" rows="10" cols="30"></textarea>
             </div>
-            
 
-            
+
+
         </div>
         <div id="jsTools">
             <h2>KeyWord Selecter</h2>
@@ -100,11 +101,41 @@
                 <button v-on:click="generate()">generate</button>
             </div>
             <br>
+            <h2>Lines Formater</h2>
+            <hr>
+            <div class="width20">
+                SrcData:<br>
+                <textarea v-model="formatSrcData" rows="15" cols="40"></textarea>
+            </div>
+            <div class="width40" style="
+                    max-height: 15rem;
+                    overflow: scroll;
+                    background-color: #ccc;
+                    padding: 20px;
+                    margin: 10px;">
+                <input type="text" v-model="formatComboIndexs">
+                <button v-on:click="executeComboFormater()">comboFormater</button>
+                <hr>
+                <template v-for="(formatCallback, index) in formatCallbacks">
+                    {{index}}:
+                    <textarea v-model="formatCallbacks[index]" :rows="formatCallbacks[index].split('\n').length"
+                        :cols="Math.max(30, ...formatCallbacks[index].split('\n').map(s=>s.length))">
+                    </textarea>
+                    <button v-on:click="executeFormat([index])">formater</button>
+                    <button v-on:click="addFormatRule(index)">+</button>
+                    <br>
+                </template>
+            </div>
+            <div class="width20">
+                DistData:<br>
+                <textarea v-model="formatDistData" rows="15" cols="40"></textarea>
+            </div>
+            <br>
         </div>
     </div>
 
     <script src="app.js?20220305a"></script>
-    <script src="jsTools.js?20220305a"></script>
+    <script src="jsTools.js?20220821a"></script>
 </body>
 
 </html>
