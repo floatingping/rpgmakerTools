@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 
 
+app.use("/mvmzSaveEditor", express.static("mvmzSaveEditor"));
 app.use("/mzSaveEditor", express.static("mzSaveEditor"));
 
 
