@@ -52,11 +52,10 @@ class MZSaveEditor {
     }) {
         const actor = this._saveData.actors._data[actorId];
         actor._name = name;
-        actor._name = profile;
+        actor._profile = profile;
         actor._exp[actor._classId] = exp;
-        actor._name = name;
-        actor._name = hp;
-        actor._name = mp;
+        actor._hp = hp;
+        actor._mp = mp;
 
         return this;
     }
