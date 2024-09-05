@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+app.use("/RPGMakerMVSaveEditor", express.static("RPGMakerMVSaveEditor"));
 app.use("/RPGMakerMZSaveEditor", express.static("RPGMakerMZSaveEditor"));
 
 
