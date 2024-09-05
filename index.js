@@ -5,9 +5,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-
-app.use("/mvmzSaveEditor", express.static("mvmzSaveEditor"));
-app.use("/mzSaveEditor", express.static("mzSaveEditor"));
+app.use("/RPGMakerMZSaveEditor", express.static("RPGMakerMZSaveEditor"));
 
 
 app.get("/", (req, res) => {

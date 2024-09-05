@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mvmzSaveEditor</title>
+    <title>RPGMakerMZSaveEditor</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link rel="shortcut icon" href="#">
 </head>
 
 <body>
     <div id="app">
-        <!-- mv<input type="file" id="mvfileInput" accept=".rmmzsave"> -->
-        <br>
-        <br>
-        mz<input type="file" id="mzfileInput" accept=".rmmzsave">
+        <h1>
+            RPGMakerMZSaveEditor
+            <a href="https://floatingping.github.io/rpgmakerTools/RPGMakerMVSaveEditor/index.html">mv</a>
+        </h1>
+        Load mz save file:<input type="file" id="mzfileInput" accept=".rmmzsave">
         <hr>
         <template v-for="(actor, index) in actors">
             <div v-if="actor">
@@ -32,16 +33,33 @@
                 plusMdf<input v-model="actor.plusMdf"><br>
                 plusAgi<input v-model="actor.plusAgi"><br>
                 plusLuk<input v-model="actor.plusLuk"><br>
+                <hr>
             </div>
         </template>
         <div>gold<input v-model="gold"></div>
-        <div>weapons<textarea v-model="weaponsJson" rows="10" cols="50"></textarea><input type="button"
-                @click="obtainWeapons99" value="obtainWeapons99"></div>
-        <div>armors<textarea v-model="armorsJson" rows="10" cols="50"></textarea><input type="button"
-                @click="obtainArmors99" value="obtainArmors99"></div>
-        <div>items<textarea v-model="itemsJson" rows="10" cols="50"></textarea><input type="button"
-                @click="obtainItems99" value="obtainItems99"></div>
-        <div><input type="button" @click="exportSaveDataAsync" value="exportSaveDataAsync"></div>
+        <div>
+            weapons<br>
+            <textarea v-model="weaponsJson" rows="10" cols="50"></textarea>
+            <input type="button" @click="obtainWeapons99" value="obtainWeapons99">
+        </div>
+        <div>
+            armors<br>
+            <textarea v-model="armorsJson" rows="10" cols="50"></textarea>
+            <input type="button" @click="obtainArmors99" value="obtainArmors99">
+        </div>
+        <div>
+            items<br>
+            <textarea v-model="itemsJson" rows="10" cols="50"></textarea>
+            <input type="button" @click="obtainItems99" value="obtainItems99">
+        </div>
+        <hr>
+        <input type="button" @click="exportSaveDataAsync" value="exportSaveDataAsync">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
     <script>
         const PIXI = new Proxy({}, {
@@ -56,10 +74,9 @@
             },
         });
     </script>
-    <script src="./js/libs/mz/libs/pako.min.js"></script>
-    <script src="./js/libs/mz/rmmz_core.js"></script>
-    <script src="./js/libs/mz/rmmz_managers.js"></script>
-    <script src="./js/MZSaveEditor.js"></script>
+    <script src="./js/mzLibs/libs/pako.min.js"></script>
+    <script src="./js/mzLibs/rmmz_core.js"></script>
+    <script src="./js/mzLibs/rmmz_managers.js"></script>
     <script src="./js/app.js"></script>
 </body>
 
