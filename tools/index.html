@@ -131,11 +131,22 @@
                 <textarea v-model="formatDistData" rows="15" cols="40"></textarea>
             </div>
             <br>
+
+
+            <h2>ExcelToTable</h2>
+            <hr>
+            <div>
+                <textarea v-model="excelToTableSrc" rows="15" cols="40"></textarea>
+                <input type="button" value="convert" v-on:click="onBtnExcelToHtmlTableClick()">
+                <textarea v-model="excelToTableDist" rows="15" cols="40"></textarea>
+            </div>
+
+
         </div>
     </div>
 
-    <script src="app.js?20220305a"></script>
-    <script src="jsTools.js?20220821a"></script>
+    <script src="app.js?20251106a"></script>
+    <script src="jsTools.js?20251106a"></script>
 </body>
 
 </html>

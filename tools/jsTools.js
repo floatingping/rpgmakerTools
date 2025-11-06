@@ -25,7 +25,12 @@ Carol`,
 }`
         ],
         formatDistData: "",
-        formatComboIndexs: "3,0"
+        formatComboIndexs: "3,0",
+        excelToTableSrc: `Name\tAge\tCity
+Alice\t30\tNew York
+Bob\t25\tLos Angeles
+Carol\t28\tChicago`,
+        excelToTableDist: ""
     },
     methods: {
         seelctKeywords: function () {
@@ -63,7 +68,7 @@ ${setters}
                     idxsFormatCallbacks.map(i => this.formatCallbacks[i])
                 ).join("\n");
             }
-            catch(e) {
+            catch (e) {
                 console.error(e);
                 alert("fortmat fail!");
             }
@@ -81,5 +86,23 @@ ${setters}
                 alert("comboFormater fail!");
             }
         },
+        excelToHtmlTable(lines) {
+            const trimLines = lines.split("\n").map(l => l.trim()).filter(l => l);
+
+            const thead = "<thead>" + trimLines.filter((_, i) => i === 0).map(l => {
+                const headers = l.split("\t").map(cell => `<th>${cell.trim()}</th>`).join("");
+                return `<tr>${headers}</tr>`;
+            }) + "</thead>";
+
+            const tbody = "<tbody>" + trimLines.filter((_, i) => i > 0).map(l => {
+                const cells = l.split("\t").map(cell => `<td>${cell.trim()}</td>`).join("");
+                return `<tr>${cells}</tr>`;
+            }).join("") + "</tbody>";
+
+            return `<table border="1">\n${thead}\n${tbody}\n</table>`;
+        },
+        onBtnExcelToHtmlTableClick() {
+            this.excelToTableDist = this.excelToHtmlTable(this.excelToTableSrc);
+        }
     }
 });
