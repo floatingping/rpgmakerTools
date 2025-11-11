@@ -89,14 +89,25 @@ ${setters}
         excelToHtmlTable(lines) {
             const trimLines = lines.split("\n").map(l => l.trim()).filter(l => l);
 
+            let headers;
+
             const thead = "<thead>" + trimLines.filter((_, i) => i === 0).map(l => {
-                const headers = l.split("\t").map(cell => `<th>${cell.trim()}</th>`).join("");
-                return `<tr>${headers}</tr>`;
+                headers = l.split("\t").map(cell => `<th>${cell.trim()}</th>`);
+                return `<tr>${headers.join("")}</tr>`;
             }) + "</thead>";
 
             const tbody = "<tbody>" + trimLines.filter((_, i) => i > 0).map(l => {
-                const cells = l.split("\t").map(cell => `<td>${cell.trim()}</td>`).join("");
-                return `<tr>${cells}</tr>`;
+                const cells = l.split("\t").map(cell => `<td>${cell.trim()}</td>`);
+
+                const remainCells = [];
+
+
+
+                for (let i = cells.length; i < headers.length; i++) {
+                    remainCells.push("<td></td>");
+                }
+
+                return `<tr>${cells.concat(remainCells).join("")}</tr>`;
             }).join("") + "</tbody>";
 
             return `<table border="1">\n${thead}\n${tbody}\n</table>`;
